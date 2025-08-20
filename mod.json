@@ -11,6 +11,10 @@
 	"version": "v1.0.0",
 	"developer": "Dulak",
 	"description": "Force all levels to open a chosen Level ID",
+	"links": {
+		"source": "https://github.com/dulakgg/Active-Choice-Limiter"
+	},
+	"tags": ["joke", "online", "enhancement"],
 	"settings": {
 		"force-level-id":{
 			"type": "int",
