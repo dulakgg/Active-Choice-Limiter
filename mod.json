@@ -1,0 +1,21 @@
+{
+	"geode": "4.7.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "dulak.active_choice_limiter",
+	"name": "Active Choice Limiter",
+	"version": "v1.0.0",
+	"developer": "Dulak",
+	"description": "",
+	"settings": {
+		"force-level-id":{
+			"type": "int",
+			"default": 89496627,
+			"description": "Force all levels to open this ID (0 = off)"
+		}
+	}
+}
