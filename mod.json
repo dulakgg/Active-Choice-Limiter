@@ -17,9 +17,11 @@
 	"tags": ["joke", "online", "enhancement"],
 	"settings": {
 		"force-level-id":{
+			"name": "Forced Level ID (127 = off)",
 			"type": "int",
 			"default": 89496627,
-			"description": "Force all levels to open this ID (0 = off)"
+			"description": "Force all levels to open this ID (127 = off)",
+			"min": 127
 		}
 	}
 }

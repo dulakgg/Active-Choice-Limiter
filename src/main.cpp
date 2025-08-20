@@ -10,15 +10,15 @@
 
 using namespace geode::prelude;
 
-static int getThatLevelYallWant() {
+static int getLevelIDFromSettings() {
   return static_cast < int > (Mod::get() -> getSettingValue < int64_t > ("force-level-id"));
 }
 
-static void openSearchThingyForLevel() {
-  auto theBestNameForAVariable = getThatLevelYallWant();
-  if (theBestNameForAVariable <= 0) return;
-  queueInMainThread([theBestNameForAVariable] {
-    auto obj = GJSearchObject::create(SearchType::Type19, std::to_string(theBestNameForAVariable));
+static void searchForLevelIDFromModSettings() {
+  auto forcedLevelID = getLevelIDFromSettings();
+  if (forcedLevelID < 128) return;
+  queueInMainThread([forcedLevelID] {
+    auto obj = GJSearchObject::create(SearchType::Type19, geode::utils::numToString(forcedLevelID));
     auto scene = LevelBrowserLayer::scene(obj);
     CCDirector::sharedDirector() -> replaceScene(scene);
   });
@@ -26,9 +26,9 @@ static void openSearchThingyForLevel() {
 
 class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
   bool init(GJSearchObject * obj) {
-    auto theBestNameForAVariable = getThatLevelYallWant();
-    if (theBestNameForAVariable > 0) {
-      obj = GJSearchObject::create(SearchType::Type19, std::to_string(theBestNameForAVariable));
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      obj = GJSearchObject::create(SearchType::Type19, geode::utils::numToString(forcedLevelID));
     }
     return LevelBrowserLayer::init(obj);
   }
@@ -36,10 +36,10 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 class $modify(MyLevelInfoLayer, LevelInfoLayer) {
   bool init(GJGameLevel * level, bool challenge) {
     if (!LevelInfoLayer::init(level, challenge)) return false;
-    auto theBestNameForAVariable = getThatLevelYallWant();
-    if (theBestNameForAVariable > 0 && (!level || level -> m_levelID != theBestNameForAVariable)) {
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127 && (!level || level -> m_levelID != forcedLevelID)) {
       queueInMainThread([] {
-        openSearchThingyForLevel();
+        searchForLevelIDFromModSettings();
       });
     }
     return true;
@@ -48,26 +48,26 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
 
 class $modify(MyMenuLayer, MenuLayer) {
   void onPlay(CCObject * sender) {
-    auto theBestNameForAVariable = getThatLevelYallWant();
-    if (theBestNameForAVariable > 0) {
-      openSearchThingyForLevel();
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      searchForLevelIDFromModSettings();
       return;
     }
     MenuLayer::onPlay(sender);
   }
 
   void onDaily(CCObject * sender) {
-    auto theBestNameForAVariable = getThatLevelYallWant();
-    if (theBestNameForAVariable > 0) {
-      openSearchThingyForLevel();
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      searchForLevelIDFromModSettings();
       return;
     }
     MenuLayer::onDaily(sender);
   }
   void onMoreGames(CCObject * sender) {
-    auto theBestNameForAVariable = getThatLevelYallWant();
-    if (theBestNameForAVariable > 0) {
-      openSearchThingyForLevel();
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      searchForLevelIDFromModSettings();
       return;
     }
     MenuLayer::onMoreGames(sender);
@@ -76,25 +76,25 @@ class $modify(MyMenuLayer, MenuLayer) {
 
 class $modify(MyCreatorLayer, CreatorLayer) {
   void onDailyLevel(CCObject * sender) {
-    auto theBestNameForAVariable = getThatLevelYallWant();
-    if (theBestNameForAVariable > 0) {
-      openSearchThingyForLevel();
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      searchForLevelIDFromModSettings();
       return;
     }
     CreatorLayer::onDailyLevel(sender);
   }
   void onEventLevel(CCObject * sender) {
-    auto theBestNameForAVariable = getThatLevelYallWant();
-    if (theBestNameForAVariable > 0) {
-      openSearchThingyForLevel();
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      searchForLevelIDFromModSettings();
       return;
     }
     CreatorLayer::onEventLevel(sender);
   }
   void onGauntlets(CCObject * sender) {
-    auto theBestNameForAVariable = getThatLevelYallWant();
-    if (theBestNameForAVariable > 0) {
-      openSearchThingyForLevel();
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      searchForLevelIDFromModSettings();
       return;
     }
     CreatorLayer::onGauntlets(sender);
