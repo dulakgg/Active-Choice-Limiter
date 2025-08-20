@@ -10,7 +10,7 @@
 	"name": "Active Choice Limiter",
 	"version": "v1.0.0",
 	"developer": "Dulak",
-	"description": "",
+	"description": "Force all levels to open a chosen Level ID",
 	"settings": {
 		"force-level-id":{
 			"type": "int",
