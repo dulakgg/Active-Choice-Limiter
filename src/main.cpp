@@ -4,6 +4,8 @@
 
 #include <Geode/modify/LevelBrowserLayer.hpp>
 
+#include <Geode/modify/SecretLayer2.hpp>
+
 #include <Geode/modify/LevelInfoLayer.hpp>
 
 #include <Geode/modify/CreatorLayer.hpp>
@@ -45,7 +47,16 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
     return true;
   }
 };
-
+class $modify(MySecretLayer2, SecretLayer2) {
+  void onSecretLevel(Cocos2d::CCObject* sender) {
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      searchForLevelIDFromModSettings();
+      return;
+    }
+    SecretLayer2::onSecretLevel(sender);
+  }
+}
 class $modify(MyMenuLayer, MenuLayer) {
   void onPlay(CCObject * sender) {
     auto forcedLevelID = getLevelIDFromSettings();
