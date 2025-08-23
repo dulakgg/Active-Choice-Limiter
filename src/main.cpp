@@ -48,7 +48,7 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
   }
 };
 class $modify(MySecretLayer2, SecretLayer2) {
-  void onSecretLevel(cocos2d::CCObject* sender) {
+  void onSecretLevel(CCObject* sender) {
     auto forcedLevelID = getLevelIDFromSettings();
     if (forcedLevelID > 127) {
       searchForLevelIDFromModSettings();
@@ -101,6 +101,14 @@ class $modify(MyCreatorLayer, CreatorLayer) {
       return;
     }
     CreatorLayer::onEventLevel(sender);
+  }
+  void onWeeklyLevel(CCObject * sender) {
+    auto forcedLevelID = getLevelIDFromSettings();
+    if (forcedLevelID > 127) {
+      searchForLevelIDFromModSettings();
+      return;
+    }
+    CreatorLayer::onWeeklyLevel(sender);
   }
   void onGauntlets(CCObject * sender) {
     auto forcedLevelID = getLevelIDFromSettings();
