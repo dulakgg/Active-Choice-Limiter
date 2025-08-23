@@ -8,7 +8,7 @@
 	},
 	"id": "dulak.active_choice_limiter",
 	"name": "Active Choice Limiter",
-	"version": "v1.0.1",
+	"version": "v1.0.2",
 	"developer": "Dulak",
 	"description": "Force all levels to open a chosen Level ID",
 	"links": {
