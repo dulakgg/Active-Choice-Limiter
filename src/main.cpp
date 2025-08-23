@@ -48,7 +48,7 @@ class $modify(MyLevelInfoLayer, LevelInfoLayer) {
   }
 };
 class $modify(MySecretLayer2, SecretLayer2) {
-  void onSecretLevel(Cocos2d::CCObject* sender) {
+  void onSecretLevel(cocos2d::CCObject* sender) {
     auto forcedLevelID = getLevelIDFromSettings();
     if (forcedLevelID > 127) {
       searchForLevelIDFromModSettings();
