@@ -56,7 +56,7 @@ class $modify(MySecretLayer2, SecretLayer2) {
     }
     SecretLayer2::onSecretLevel(sender);
   }
-}
+};
 class $modify(MyMenuLayer, MenuLayer) {
   void onPlay(CCObject * sender) {
     auto forcedLevelID = getLevelIDFromSettings();
