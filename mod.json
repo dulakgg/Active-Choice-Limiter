@@ -1,18 +1,22 @@
 {
-	"geode": "4.7.0",
+	"geode": "5.0.0-beta.1",
 	"gd": {
-		"win": "2.2074",
-		"android": "2.2074",
-		"mac": "2.2074",
-		"ios": "2.2074"
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
 	},
 	"id": "dulak.active_choice_limiter",
 	"name": "Active Choice Limiter",
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"developer": "Dulak",
 	"description": "Force all levels to open a chosen Level ID",
 	"links": {
 		"source": "https://github.com/dulakgg/Active-Choice-Limiter"
+	},
+	"issues": {
+		"info": "Submit problems on repo page (github) or @dulakgg on Discord.",
+		"url": "https://github.com/dulakgg/Active-Choice-Limiter/issues"
 	},
 	"tags": ["joke", "online", "enhancement"],
 	"settings": {
